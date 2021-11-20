@@ -1,3 +1,4 @@
+import 'package:fitegrate_project/provider/Database.dart';
 import 'package:fitegrate_project/screens/dashboard.dart';
 import 'package:flutter/material.dart';
 
@@ -11,12 +12,13 @@ class _GetStartedState extends State<GetStarted> {
   final _formKey = GlobalKey<FormState>();
   //int age=0,height=0,weight=0;
   //Long phno;
+  bool _isloading = false;
   String gender= 'pnts',age='Null',height='Null',weight='Null',phno='Null';
   
   confirm_details() async{
     if(_formKey.currentState!.validate()){
       setState(() {
-        
+        _isloading=true;
       });
       Map<String,String> basicinfoMap = {
         "age" : age,
@@ -25,11 +27,11 @@ class _GetStartedState extends State<GetStarted> {
         "weight" : weight,
         "ph number" : phno
       };
-      // await databaseService.addQuestionData(basicinfoMap).then((value){
-      //   setState(() {
-      //     _isloading = false;
-      //   });
-      // });
+      await DatabaseService().addBasicData(basicinfoMap).then((value){
+        setState(() {
+          _isloading = false;
+        });
+      });
       Navigator.pushReplacement(context, MaterialPageRoute(
             builder: (context) => DashBoard(),
           ));
@@ -46,7 +48,11 @@ class _GetStartedState extends State<GetStarted> {
         elevation: 0.0,
        // brightness: Brightness.light,
       ),
-      body: Center(
+      body: _isloading ? Container(
+        child: Center(
+          child: CircularProgressIndicator(),
+        ),
+      ) :Center(
         child: Form(
           child: SingleChildScrollView(
             child: Column(

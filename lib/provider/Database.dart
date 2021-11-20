@@ -16,11 +16,13 @@ class DatabaseService{
                 print(e.toString());
         });
     }
-    // Future<void> addBasicData (Map basicInfo)async{
-    //      await FirebaseFirestore.instance
-    //         .collection("Users")
-    //         .doc(uid)
-    //         .collection("Info")
-    //         .add(basicInfo);
-    // }
+    Future<void> addBasicData (Map<String,String> basicInfo)async{
+         await FirebaseFirestore.instance
+            .collection("Users")
+            .doc(uid)
+            .collection("Info")
+            .add(basicInfo)
+            .catchError((e){print(e.toString());
+            });
+    }
 }
