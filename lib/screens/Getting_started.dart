@@ -13,14 +13,16 @@ class _GetStartedState extends State<GetStarted> {
   //int age=0,height=0,weight=0;
   //Long phno;
   bool _isloading = false;
-  String gender= 'pnts',age='Null',height='Null',weight='Null',phno='Null';
+  String name='Null',gender= 'Null',age='Null',height='Null',weight='Null',phno='Null';
   
+
   confirm_details() async{
     if(_formKey.currentState!.validate()){
       setState(() {
         _isloading=true;
       });
       Map<String,String> basicinfoMap = {
+        "name" : name,
         "age" : age,
         "gender" : gender,
         "height" : height,
@@ -57,6 +59,41 @@ class _GetStartedState extends State<GetStarted> {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                Container(
+                  height: size.height * 0.065,
+                  width: size.width * 0.8,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[350],
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: Stack(children: [
+                    Container(
+                      padding: EdgeInsets.only(left: 30,top: 10),
+                      height: size.height * 0.065,
+                      width: size.width *0.4,
+                      child: Text('Name',style: TextStyle(fontSize: 25),),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(left: 200),
+                      height: size.height * 0.065,
+                      width: size.width * 0.8,
+                      child: TextFormField(
+                        validator: (value) => value!.isEmpty ? "Enter the name" : null,
+                        style: TextStyle(fontSize: 25),
+                        onChanged: (value) {
+                          name = value;
+                        },
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          //contentPadding:  EdgeInsets.only(left: 200,top: 10),
+                        ),
+                        keyboardType: TextInputType.name,
+                        textInputAction: TextInputAction.next,
+                      ),
+                    ),
+                  ],),
+                ),
+                SizedBox(height: 40),
                 Container(
                   height: size.height * 0.065,
                   width: size.width * 0.8,
