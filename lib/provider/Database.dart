@@ -8,6 +8,11 @@ class DatabaseService{
     // DatabaseService({ required this.uid});
 
    // final CollectionReference Users = FirebaseFirestore.instance.collection('Users');
+    Future<void> enterUID (uid)async {
+      await FirebaseFirestore.instance
+          .collection("Users")
+          .doc(uid);
+    }
     Future<void> addName (String name,uid)async {
         await FirebaseFirestore.instance
             .collection("Users")
