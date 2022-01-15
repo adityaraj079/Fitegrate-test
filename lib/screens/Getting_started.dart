@@ -9,16 +9,14 @@ class GetStarted extends StatefulWidget {
 }
 
 class _GetStartedState extends State<GetStarted> {
-  final _formKey = GlobalKey<FormState>();
+  // final _formKey = GlobalKey<FormState>();
   bool _isloading = false;
   String name='Null',gender= 'Null',age='Null',height='Null',weight='Null',phno='Null';
   
 
   confirm_details() async{
 
-    
-
-    if(_formKey.currentState!.validate()){
+    // if(_formKey.currentState!.validate()){
       setState(() {
         _isloading=true;
       });
@@ -31,14 +29,12 @@ class _GetStartedState extends State<GetStarted> {
         "ph number" : phno
       };
 
-      await DatabaseService().addBasicData(basicinfoMap).then((value){
+       await DatabaseService().addBasicData(basicinfoMap).then((value){
         setState(() {
           _isloading = false;
         });
       });
-      Navigator.pushReplacement(context, MaterialPageRoute(
-            builder: (context) => DashBoard(),
-          ));
+
       // await databaseService.addQuestionData(basicinfoMap).then((value){
       //   setState(() {
       //     _isloading = false;
@@ -48,9 +44,12 @@ class _GetStartedState extends State<GetStarted> {
       //       builder: (context) => DashBoard(),
       //     ));
 
-      Navigator.pushNamed(context, 'Dashboard');
+     // Navigator.pushNamed(context, 'Dashboard');
 
-    }
+    // }
+    Navigator.pushReplacement(context, MaterialPageRoute(
+                builder: (context) => DashBoard(),
+              ));
   }
   @override
   Widget build(BuildContext context) {
@@ -94,7 +93,10 @@ class _GetStartedState extends State<GetStarted> {
                         validator: (value) => value!.isEmpty ? "Enter the name" : null,
                         style: TextStyle(fontSize: 25),
                         onChanged: (value) {
-                          name = value;
+                          setState(() {
+                            name = value;
+                          });
+                          print(name);
                         },
                         decoration: InputDecoration(
                           border: InputBorder.none,
@@ -129,7 +131,10 @@ class _GetStartedState extends State<GetStarted> {
                         validator: (value) => value!.isEmpty ? "Enter the age" : null,
                         style: TextStyle(fontSize: 25),
                       onChanged: (value) {
-                        age = value;
+                        setState(() {
+                          age = value;
+                        });
+                        print(age);
                       },
                       decoration: InputDecoration(
                         border: InputBorder.none,
@@ -165,7 +170,10 @@ class _GetStartedState extends State<GetStarted> {
                         validator: (value) => value!.isEmpty ? "Enter the Gender" : null,
                         style: TextStyle(fontSize: 25),
                       onChanged: (value) {
-                        gender = value;
+                        setState(() {
+                          gender = value;
+                        });
+                        print(gender);
                       },
                       decoration: InputDecoration(
                         border: InputBorder.none,
@@ -201,7 +209,10 @@ class _GetStartedState extends State<GetStarted> {
                         validator: (value) => value!.isEmpty ? "Enter the height" : null,
                         style: TextStyle(fontSize: 25),
                       onChanged: (value) {
-                        height = value;
+                        setState(() {
+                          height = value;
+                        });
+                        print(height);
                       },
                       decoration: InputDecoration(
                         border: InputBorder.none,
@@ -237,7 +248,10 @@ class _GetStartedState extends State<GetStarted> {
                         validator: (value) => value!.isEmpty ? "Enter the weight" : null,
                         style: TextStyle(fontSize: 25),
                       onChanged: (value) {
-                        weight = value;
+                        setState(() {
+                          weight = value;
+                        });
+                        print(weight);
                       },
                       decoration: InputDecoration(
                         border: InputBorder.none,
@@ -273,7 +287,10 @@ class _GetStartedState extends State<GetStarted> {
                         validator: (value) => value!.isEmpty ? "Enter the Phone number" : null,
                         style: TextStyle(fontSize: 25),
                       onChanged: (value) {
-                        phno = value;
+                        setState(() {
+                          phno = value;
+                        });
+                        print(phno);
                       },
                       decoration: InputDecoration(
                         border: InputBorder.none,

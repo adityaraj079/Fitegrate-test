@@ -367,7 +367,7 @@ bool _issecure2=true;
                 email: email, password: password))
             .user;
           await DatabaseService().enterUID(user!.uid);
-         // print(user.uid);
+          print(user.uid);
         setState(() {
           if (user != null) {
             Fluttertoast.showToast(msg: "user created");

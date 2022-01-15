@@ -9,19 +9,28 @@ class DatabaseService{
 
    // final CollectionReference Users = FirebaseFirestore.instance.collection('Users');
     Future<void> enterUID (uid)async {
-      await FirebaseFirestore.instance
-          .collection("Users")
-          .doc(uid);
+      this.uid = uid;
     }
-    Future<void> addName (String name,uid)async {
-        await FirebaseFirestore.instance
-            .collection("Users")
-            .doc(uid)
-            .set({'name': name})
-            .catchError((e){
-                print(e.toString());
-        });
-    }
+   //  Future<void> enterUID (uid)async {
+   //    await FirebaseFirestore.instance
+   //        .collection("Users")
+   //        .doc(uid)
+   //        .collection("testing")
+   //        .add({'name': "yfyboi"})
+   //        .catchError((e){
+   //                  print(e.toString());
+   //        });
+   //    print(uid);
+   //  }
+    // Future<void> addName (String name,uid)async {
+    //     await FirebaseFirestore.instance
+    //         .collection("Users")
+    //         .doc(uid)
+    //         .set({'name': name})
+    //         .catchError((e){
+    //             print(e.toString());
+    //     });
+    // }
     Future<void> addBasicData (Map<String,String> basicInfo)async{
          await FirebaseFirestore.instance
             .collection("Users")
@@ -46,7 +55,7 @@ class DatabaseService{
     //     return null;
     //   }
     //}
-    getName() async{
-      return await FirebaseFirestore.instance.collection("Users").doc(uid).snapshots();
-    }
+    // getName() async{
+    //   return await FirebaseFirestore.instance.collection("Users").doc(uid).snapshots();
+    // }
 }
