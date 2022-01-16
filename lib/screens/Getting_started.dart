@@ -9,14 +9,14 @@ class GetStarted extends StatefulWidget {
 }
 
 class _GetStartedState extends State<GetStarted> {
-  // final _formKey = GlobalKey<FormState>();
+   final _formKey = GlobalKey<FormState>();
   bool _isloading = false;
   String name='Null',gender= 'Null',age='Null',height='Null',weight='Null',phno='Null';
   
 
   confirm_details() async{
 
-    // if(_formKey.currentState!.validate()){
+    if(_formKey.currentState!.validate()){
       setState(() {
         _isloading=true;
       });
@@ -46,7 +46,7 @@ class _GetStartedState extends State<GetStarted> {
 
      // Navigator.pushNamed(context, 'Dashboard');
 
-    // }
+     }
     Navigator.pushReplacement(context, MaterialPageRoute(
                 builder: (context) => DashBoard(),
               ));
