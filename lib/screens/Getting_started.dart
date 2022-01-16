@@ -12,7 +12,6 @@ class _GetStartedState extends State<GetStarted> {
    final _formKey = GlobalKey<FormState>();
   bool _isloading = false;
   String name='Null',gender= 'Null',age='Null',height='Null',weight='Null',phno='Null';
-  
 
   confirm_details() async{
 
@@ -20,6 +19,7 @@ class _GetStartedState extends State<GetStarted> {
       setState(() {
         _isloading=true;
       });
+
       Map<String,String> basicinfoMap = {
         "name" : name,
         "age" : age,
@@ -29,11 +29,22 @@ class _GetStartedState extends State<GetStarted> {
         "ph number" : phno
       };
 
+<<<<<<< HEAD
        await DatabaseService().addBasicData(basicinfoMap).then((value){
+=======
+      await DatabaseService().addBasicData(basicinfoMap).then((value){
+
+>>>>>>> adityaraj079-main
         setState(() {
           _isloading = false;
         });
       });
+<<<<<<< HEAD
+=======
+      Navigator.pushReplacement(context, MaterialPageRoute(
+            builder: (context) => DashBoard(),
+          ));
+>>>>>>> adityaraj079-main
 
       // await databaseService.addQuestionData(basicinfoMap).then((value){
       //   setState(() {
@@ -46,11 +57,19 @@ class _GetStartedState extends State<GetStarted> {
 
      // Navigator.pushNamed(context, 'Dashboard');
 
+<<<<<<< HEAD
      }
     Navigator.pushReplacement(context, MaterialPageRoute(
                 builder: (context) => DashBoard(),
               ));
   }
+=======
+    }
+     // Navigator.pushNamed(context, 'Dashboard');
+
+     }
+
+>>>>>>> adityaraj079-main
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

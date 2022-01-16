@@ -366,7 +366,11 @@ bool _issecure2=true;
         final User? user = (await _auth.createUserWithEmailAndPassword(
                 email: email, password: password))
             .user;
+<<<<<<< HEAD
           await DatabaseService().enterUID(user!.uid);
+=======
+           DatabaseService().enterUID(user!.uid);
+>>>>>>> adityaraj079-main
           print(user.uid);
         setState(() {
           if (user != null) {
